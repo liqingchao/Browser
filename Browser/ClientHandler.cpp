@@ -514,16 +514,7 @@ namespace Browser
 		bool* no_javascript_access)
 	{
 		// Redirect all popup page into the source frame forcefully
-		//frame->LoadURL(target_url);
-
-		if(target_disposition >= WOD_NEW_FOREGROUND_TAB && target_disposition <= WOD_NEW_WINDOW){
-			bool bWithControls = true;
-			if(target_disposition == WOD_NEW_POPUP)
-				bWithControls = false;
-			BrowserManager::Get()->CreateRootWindowAsPopup(bWithControls, IsOsr(), popupFeatures, windowInfo, client, settings);
-			//Don't allow new window or tab
-			return true;
-		}
+		frame->LoadURL(target_url);
 		return false;
 	}
 

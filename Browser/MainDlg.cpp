@@ -62,7 +62,12 @@ int APIENTRY _tWinMain(HINSTANCE hInstance,
 	scoped_ptr<Browser::MessageLoop> message_loop;
 	message_loop.reset(new Browser::MessageLoop);
 
-	pBrowserManager->CreateRootWindow(true,false,CefRect());
+	CefRect bounds;
+	bounds.x = 0;
+	bounds.y = 0;
+	bounds.height = GetSystemMetrics(SM_CYSCREEN);
+	bounds.width = GetSystemMetrics(SM_CXSCREEN);
+	pBrowserManager->CreateRootWindow(true,false,bounds,true);
 
 	//DuiLib::CPaintManagerUI::MessageLoop();
 	result = message_loop->Run();

@@ -31,6 +31,7 @@ namespace Browser
 
 	protected:
 		void Notify(DuiLib::TNotifyUI& msg);
+		LRESULT HandleMessage(UINT uMsg, WPARAM wParam, LPARAM lParam);
 
 	private:
 		// BrowserWindow::Delegate methods.
@@ -44,12 +45,6 @@ namespace Browser
 		void NotifyDestroyedIfDone();
 
 	private:
-		Browser::TitleUI* tabTitle1;
-		DuiLib::CControlUI* uiToolbar;
-		DuiLib::CButtonUI* btnBackward;
-		DuiLib::CButtonUI* btnForward;
-		DuiLib::CEditUI* editUrl;
-		DuiLib::CEditUI* editKeyword;
 		DuiLib::CDuiString m_sPopup;
 
 	public:
@@ -76,13 +71,13 @@ namespace Browser
 		void CreateBrowserCtrl(const std::wstring& startup_url);
 		void CreateBrowserWindow(const CefBrowserSettings& settings);
 
-		bool m_bWithControls;
 		RECT m_rcBrowser;
 		bool m_bWithOsr;
 		bool m_bIsPopup;
 		bool m_bInitialized;
 		bool m_bWindowDestroyed;
 		bool m_bBrowserDestroyed;
+		bool m_bAskingExit;
 		Browser::BrowserUI* m_pBrowser;
 		CefRefPtr<CefBrowser> m_Browser;
 		BrowserDlg::Delegate* m_Delegate;

@@ -97,8 +97,9 @@ namespace Browser
 		DCHECK(command_line.get());
 		m_bRequestContextPerBrowser = command_line->HasSwitch(Switches::kRequestContextPerBrowser);
 		m_bRequestContextSharedBrowser = command_line->HasSwitch(Switches::kRequestContextSharedCache);
-
+		
 		sHomepage = _T("https://www.hao123.com/");
+		hMainWnd = NULL;
 
 	}
 
@@ -124,11 +125,11 @@ namespace Browser
 	scoped_refptr<BrowserDlg> BrowserManager::CreateRootWindow(
 		bool with_controls,
 		bool with_osr,
-		const CefRect& bounds) {
+		const CefRect& bounds,
+		bool with_full) {
 			CefBrowserSettings settings;
 			scoped_refptr<BrowserDlg> pDlg = new Browser::BrowserDlg();
 			if(pDlg){
-				//pDlg->Create(NULL,_T("Browser"),UI_WNDSTYLE_FRAME,WS_EX_APPWINDOW,0,0,0,0,NULL);
 				pDlg->Init(this, with_controls, with_osr, bounds, settings, GetHomepage());
 
 				// Store a reference to the root window on the main thread.

@@ -38,12 +38,14 @@ namespace Browser
 		static BrowserManager* Get();
 
 		std::wstring GetHomepage(){return sHomepage;};
-
-		// Returns the full path to |file_name|.
-		std::string GetDownloadPath(const std::string& file_name);
+		HWND GetMainHWND(){return hMainWnd;};
+		void SetMainHWND(HWND hWnd){hMainWnd=hWnd;};
 
 		// Returns the main application URL.
 		std::string GetMainUrl();
+
+		// Returns the full path to |file_name|.
+		std::string GetDownloadPath(const std::string& file_name);
 
 		// Returns the background color.
 		cef_color_t GetBackgroundColor();
@@ -51,7 +53,8 @@ namespace Browser
 		scoped_refptr<BrowserDlg> CreateRootWindow(
 			bool with_controls,
 			bool with_osr,
-			const CefRect& bounds);
+			const CefRect& bounds,
+			bool with_full);
 
 		scoped_refptr<BrowserDlg> CreateRootWindowAsPopup(
 			bool with_controls,
@@ -96,6 +99,7 @@ namespace Browser
 		CefRefPtr<CefRequestContext> m_SharedRequestContext;
 
 		std::wstring sHomepage;
+		HWND hMainWnd;
 
 		DISALLOW_COPY_AND_ASSIGN(BrowserManager);
 	};
