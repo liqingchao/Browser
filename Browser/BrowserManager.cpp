@@ -98,7 +98,7 @@ namespace Browser
 		m_bRequestContextPerBrowser = command_line->HasSwitch(Switches::kRequestContextPerBrowser);
 		m_bRequestContextSharedBrowser = command_line->HasSwitch(Switches::kRequestContextSharedCache);
 
-		sHomepage = _T("https://www.hao123.com/");
+		sHomepage = _T("https://gate.io/");
 
 	}
 

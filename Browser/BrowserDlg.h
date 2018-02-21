@@ -53,7 +53,7 @@ namespace Browser
 		DuiLib::CButtonUI* btnBackward;
 		DuiLib::CButtonUI* btnForward;
 		DuiLib::CEditUI* editUrl;
-		DuiLib::CEditUI* editKeyword;
+		//DuiLib::CEditUI* editKeyword;
 		DuiLib::CDuiString m_sPopup;
 
 	public:

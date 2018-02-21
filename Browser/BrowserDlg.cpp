@@ -22,7 +22,7 @@ namespace Browser
 		btnBackward = NULL;
 		btnForward = NULL;
 		editUrl = NULL;
-		editKeyword = NULL;
+		//editKeyword = NULL;
 	}
 
 	BrowserDlg::~BrowserDlg()
@@ -46,8 +46,8 @@ namespace Browser
 		btnBackward = static_cast<DuiLib::CButtonUI*>(m_Manager.FindControl(_T("btnBackward")));
 		btnForward = static_cast<DuiLib::CButtonUI*>(m_Manager.FindControl(_T("btnForward")));
 		editUrl = static_cast<DuiLib::CEditUI*>(m_Manager.FindControl(_T("editUrl")));
-		editKeyword = static_cast<DuiLib::CEditUI*>(m_Manager.FindControl(_T("editKeyword")));
-		if (uiTabs == NULL || tabNew == NULL || uiToolbar == NULL || editUrl == NULL || editKeyword == NULL)
+		//editKeyword = static_cast<DuiLib::CEditUI*>(m_Manager.FindControl(_T("editKeyword")));
+		if (uiTabs == NULL || tabNew == NULL || uiToolbar == NULL || editUrl == NULL/* || editKeyword == NULL*/)
 		{
 			MessageBox(NULL,_T("加载资源文件失败"),_T("Browser"),MB_OK|MB_ICONERROR);
 			return;
@@ -56,6 +56,8 @@ namespace Browser
 			btnBackward->SetEnabled(false);
 		if(btnForward)
 			btnForward->SetEnabled(false);
+		if (editUrl)
+			editUrl->SetEnabled(false);
 	}
 
 	void BrowserDlg::OnFinalMessage(HWND hWnd)
@@ -135,12 +137,14 @@ namespace Browser
 				DuiLib::CDuiString sUrl = editUrl->GetText();
 				editUrl->SetText(sUrl);
 				LoadURL(sUrl.GetData());
-			}else if (_tcsicmp(sCtrlName,_T("btnSearch")) == 0){//搜索
-				DuiLib::CDuiString sUrl,sKeyword = editKeyword->GetText();
-				sUrl.Format(_T("https://www.baidu.com/s?wd=%s"),sKeyword.GetData());
-				editUrl->SetText(sUrl);
-				LoadURL(sUrl.GetData());
-			}else if (_tcsicmp(sCtrlName,_T("btnHome")) == 0){//主页
+			}
+			//else if (_tcsicmp(sCtrlName,_T("btnSearch")) == 0){//搜索
+			//	DuiLib::CDuiString sUrl,sKeyword = editKeyword->GetText();
+			//	sUrl.Format(_T("https://www.baidu.com/s?wd=%s"),sKeyword.GetData());
+			//	editUrl->SetText(sUrl);
+			//	LoadURL(sUrl.GetData());
+			//}
+			else if (_tcsicmp(sCtrlName,_T("btnHome")) == 0){//主页
 				editUrl->SetText(BrowserManager::Get()->GetHomepage().c_str());
 				LoadURL(BrowserManager::Get()->GetHomepage().c_str());
 			}else if (_tcsicmp(sCtrlName,_T("btnSettings")) == 0){
@@ -157,7 +161,8 @@ namespace Browser
 				}
 			}else if (_tcsicmp(sCtrlName,_T("tabNew")) == 0){
 				if(m_pBrowser){
-					m_pBrowser->NewPage(L"about:blank");
+					m_pBrowser->NewPage(BrowserManager::Get()->GetHomepage().c_str());
+					//m_pBrowser->NewPage(L"about:blank");
 				}
 			}else if (_tcsnicmp(sCtrlName,_T("tabClose"),8) == 0){
 				CDuiString sBuffer = sCtrlName;
@@ -170,7 +175,8 @@ namespace Browser
 					TitleUI* pItem = (TitleUI*)uiTabs->GetItemAt(idx);
 					if (pItem != NULL){
 						if(nTabsCount <= 2){
-							LoadURL(L"about:blank");
+							LoadURL(BrowserManager::Get()->GetHomepage().c_str());
+							//LoadURL(L"about:blank");
 						}else{
 							if(pItem->GetTag() == nBrowserId){
 								TitleUI* pTitle;
@@ -194,12 +200,13 @@ namespace Browser
 				DuiLib::CDuiString sUrl = editUrl->GetText();
 				editUrl->SetText(sUrl);
 				LoadURL(sUrl.GetData());
-			}else if (_tcsicmp(sCtrlName,_T("editKeyword")) == 0){
-				DuiLib::CDuiString sUrl,sKeyword = editKeyword->GetText();
-				sUrl.Format(_T("https://www.baidu.com/s?wd=%s"),sKeyword.GetData());
-				editUrl->SetText(sUrl);
-				LoadURL(sUrl.GetData());
 			}
+			//else if (_tcsicmp(sCtrlName,_T("editKeyword")) == 0){
+			//	DuiLib::CDuiString sUrl,sKeyword = editKeyword->GetText();
+			//	sUrl.Format(_T("https://www.baidu.com/s?wd=%s"),sKeyword.GetData());
+			//	editUrl->SetText(sUrl);
+			//	LoadURL(sUrl.GetData());
+			//}
 		}
 		else if (_tcsicmp(msg.sType,DUI_MSGTYPE_SELECTCHANGED) == 0)
 		{
@@ -237,7 +244,7 @@ namespace Browser
 		}else{
 			TitleUI* pTitle = new TitleUI;
 			uiTabs->AddAt(pTitle, iCount - 1);
-			sBuffer.Format(_T("name=\"tabTitle%d\" height=\"30\" minwidth=\"100\" maxwidth=\"256\" floatalign=\"right\" borderround=\"2,2\" textpadding=\"5,1,20,2\" bkcolor=\"FF1587D8\" selectedbkcolor=\"FF3498DB\" textcolor=\"FFFFFFFF\" selectedtextcolor=\"FFFFFFFF\" group=\"Titles\""), nBrowserId);
+			sBuffer.Format(_T("name=\"tabTitle%d\" height=\"30\" minwidth=\"100\" maxwidth=\"256\" floatalign=\"right\" borderround=\"2,2\" textpadding=\"5,1,20,2\" bkcolor=\"FFB6D7A8\" selectedbkcolor=\"FFD9EAD3\" textcolor=\"FFFFFFFF\" selectedtextcolor=\"FFFFFFFF\" group=\"Titles\""), nBrowserId);
 			pTitle->ApplyAttributeList(sBuffer);
 			CControlUI* pControl = new CControlUI;
 			CButtonUI* pClose = new CButtonUI;

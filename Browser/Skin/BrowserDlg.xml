@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
-<Window size="1080,800" sizebox="4,2,4,4" caption="0,0,0,34" mininfo="168,30" showshadow="true" shadowsize="6" shadowsharpness="255" shadowdarkness="60" shadowposition="2,2" shadowcolor="FF297DBA">
+<Window size="1080,800" sizebox="4,2,4,4" caption="0,0,0,34" mininfo="168,30" showshadow="true" shadowsize="6" shadowsharpness="255" shadowdarkness="60" shadowposition="2,2" shadowcolor="FFB6D7A8">
 	<Font shared="true" id="0" name="宋体" size="14" bold="false" italic="false" default="true" />
-	<VerticalLayout name="bg" bkcolor="FF197CCC" inset="2,1,2,2">
+	<VerticalLayout name="bg" bkcolor="FFB6D7A8" inset="2,1,2,2">
 	<!--2F9EED/1587D8/1971AF FF3498DB/FF297DBA/FF34495E b6c1c9 -->
 		<HorizontalLayout name="uiTop" height="32">
 			<HorizontalLayout name="uiTabs" height="32" childpadding="2" inset="3,4,0,-2">
@@ -12,7 +12,7 @@
 			<Button name="restorebtn" width="30" height="30" normalimage="file='btnRestore.png' source='0,0,30,30'" hotimage="file='btnRestore.png' source='30,0,60,30'" pushedimage="file='btnRestore.png' source='60,0,90,30'" visible="false" />
 			<Button name="closebtn" width="30" height="30" normalimage="file='btnClose.png' source='0,0,30,30'" hotimage="file='btnClose.png' source='30,0,60,30'" pushedimage="file='btnClose.png' source='60,0,90,30'" />
 		</HorizontalLayout>
-		<HorizontalLayout name="uiToolbar" bkcolor="FF3498DB" height="28" inset="0,2,0,2" borderround="2,2">
+		<HorizontalLayout name="uiToolbar" bkcolor="FFB6D7A8" height="28" inset="0,2,0,2" borderround="2,2">
 			<Control width="2" />
 			<Button name="btnBackward" width="24" height="24" borderround="2,2" foreimage="file='btnBackward.png' dest='2,2,22,22'" hotimage="file='btnPushed.png' source='0,0,24,24' dest='0,0,24,24' corner='3,3,3,3'" />
 			<Button name="btnForward" width="24" height="24" borderround="2,2" foreimage="file='btnForward.png' dest='2,2,22,22'" hotimage="file='btnPushed.png' source='0,0,24,24' dest='0,0,24,24' corner='3,3,3,3'" />
@@ -22,11 +22,12 @@
 				<Button name="btnGoto" width="24" height="24" normalimage="file='btnGoto.png' source='0,0,20,20' dest='2,2,22,22'" />
 			</HorizontalLayout>
 			<Control width="2" />
-			<HorizontalLayout width="210" bkcolor="FFFFFFFF" height="24" borderround="2,2">
+			<!--<HorizontalLayout width="210" bkcolor="FFFFFFFF" height="24" borderround="2,2">
 				<Edit name="editKeyword" width="186" height="24" bkcolor="FFFFFFFF" textcolor="FF000000" tipvalue="百度搜索" tipvaluecolor="FFCCCCCC" />
 				<Button name="btnSearch" width="24" height="24" bkcolor="FFFFFFFF" normalimage="file='btnSearch.png' source='0,0,20,20' dest='2,2,22,22'" />
 			</HorizontalLayout>
 			<Control width="2" />
+			-->
 			<Button name="btnHome" width="24" height="24" borderround="2,2" foreimage="file='btnHome.png' dest='2,2,22,22'" hotimage="file='btnPushed.png' source='0,0,24,24' dest='0,0,24,24' corner='3,3,3,3'" />
 			<Button name="btnSettings" width="24" height="24" borderround="2,2" foreimage="file='btnSettings.png' dest='2,2,22,22'" hotimage="file='btnPushed.png' source='0,0,24,24' dest='0,0,24,24' corner='3,3,3,3'" />
 			<Control width="2" />
