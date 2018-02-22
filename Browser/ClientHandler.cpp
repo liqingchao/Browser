@@ -58,7 +58,7 @@ namespace Browser
 		CefRefPtr<CefMenuModel> model)
 	{
 		CEF_REQUIRE_UI_THREAD();
-		//model->Clear();//清空上下文菜单项
+		model->Clear();//清空上下文菜单项
 
 		//if(model->IsVisible(MENU_ID_PRINT))
 		//	model->Remove(MENU_ID_PRINT);//删除打印菜单
